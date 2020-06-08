@@ -10,6 +10,7 @@ if(isset($_GET['_url'])){
 
 $routes = [
     '/' => 'homepage',
+    '/catalog/category' => 'category'
 
 ];
 

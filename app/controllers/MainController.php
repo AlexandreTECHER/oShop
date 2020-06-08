@@ -6,6 +6,10 @@ class MainController{
         $this->show('home');
     }
 
+    public function category(){
+        $this->show('category');
+    }
+
     public function error(){
         http_response_code(404);
         $this->show('erreur copain');
