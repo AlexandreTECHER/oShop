@@ -6,8 +6,11 @@ class MainController{
         $this->show('home');
     }
 
-    public function category(){
-        $this->show('category');
+    public function category($params){
+
+        $categoryId = $params['categoryId'];
+
+        $this->show('category', ['categoryId' => $categoryId]);
     }
 
     public function error(){

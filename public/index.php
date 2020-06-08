@@ -24,6 +24,16 @@ $router->map(
     'homepage' 
 );
 
+$router->map( 
+    'GET', 
+    '/catalog/category/[i:categoryId]', 
+    [
+        'method' => 'category',
+        'controller' => 'MainController'
+    ],
+    'catalog-category' 
+);
+
 
 $match = $router->match();
 
@@ -38,4 +48,4 @@ if(!$match){
 
 
 $mainController = new $controllerToUse();
-$mainController->$methodeToUse();
+$mainController->$methodeToUse($match['params']);
