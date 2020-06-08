@@ -1,16 +1,16 @@
 <?php
 
-class MainController{
+class CatalogController{
 
-    public function homepage(){
-        $this->show('home');
+    public function category($params){
+
+        $categoryId = $params['categoryId'];
+
+        $this->show('category', [
+            'categoryId' => $categoryId
+        ]);
     }
 
-    public function error(){
-        http_response_code(404);
-        echo 'erreur';
-        exit();
-    }
 
     private function show($viewName, $viewData = []){
 

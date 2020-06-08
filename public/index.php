@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/controllers/MainController.php';
+require_once __DIR__ . '/../app/controllers/CatalogController.php';
 
 $router = new AltoRouter();
 
@@ -29,7 +30,7 @@ $router->map(
     '/catalog/category/[i:categoryId]', 
     [
         'method' => 'category',
-        'controller' => 'MainController'
+        'controller' => 'CatalogController'
     ],
     'catalog-category' 
 );
