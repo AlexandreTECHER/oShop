@@ -9,7 +9,7 @@ if(isset($_GET['_url'])){
 }
 
 $routes = [
-    '/' => 'test',
+    '/' => 'homepage',
 
 ];
 

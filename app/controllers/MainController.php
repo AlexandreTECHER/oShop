@@ -2,8 +2,8 @@
 
 class MainController{
 
-    public function test(){
-        $this->show('test');
+    public function homepage(){
+        $this->show('home');
     }
 
     public function error(){
@@ -18,5 +18,4 @@ class MainController{
         require_once __DIR__ . '/../views/footer.tpl.php';
 
     }
-
 }
