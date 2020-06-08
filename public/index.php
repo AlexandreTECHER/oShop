@@ -1,25 +1,41 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/controllers/MainController.php';
 
-if(isset($_GET['_url'])){
-    $currentPage = $_GET['_url'];
-}else{
-    $currentPage = '/';
-}
+$router = new AltoRouter();
 
-$routes = [
-    '/' => 'homepage',
-    '/catalog/category' => 'category'
+$router->setBasePath($_SERVER['BASE_URI']);
 
-];
+// if(isset($_GET['_url'])){
+//     $currentPage = $_GET['_url'];
+// }else{
+//     $currentPage = '/';
+// }
 
-if(!array_key_exists($currentPage, $routes)){
+
+$router->map( 
+    'GET', 
+    '/', 
+    [
+        'method' => 'homepage',
+        'controller' => 'MainController'
+    ],
+    'homepage' 
+);
+
+
+$match = $router->match();
+
+$methodeToUse = $match['target']['method'];
+$controllerToUse = $match['target']['controller'];
+
+
+if(!$match){
     $mainController = new MainController();
     $mainController->error();
 }
 
-$methodeToUse = $routes[$currentPage];
 
-$mainController = new MainController();
+$mainController = new $controllerToUse();
 $mainController->$methodeToUse();

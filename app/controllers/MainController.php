@@ -12,7 +12,8 @@ class MainController{
 
     public function error(){
         http_response_code(404);
-        $this->show('erreur copain');
+        echo 'erreur';
+        exit();
     }
 
     private function show($viewName, $viewData = []){
