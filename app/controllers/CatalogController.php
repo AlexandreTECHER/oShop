@@ -11,6 +11,33 @@ class CatalogController{
         ]);
     }
 
+    public function type($params){
+
+        $typeId = $params['typeId'];
+
+        $this->show('type', [
+            'typeId' => $typeId
+        ]);
+    }
+
+    public function product($params){
+
+        $productId = $params['productId'];
+
+        $this->show('product', [
+            'productId' => $productId
+        ]);
+    }
+
+    public function brand($params){
+
+        $brandId = $params['brandId'];
+
+        $this->show('brand', [
+            'brandId' => $brandId
+        ]);
+    }
+
 
     private function show($viewName, $viewData = []){
 

@@ -1,0 +1,1 @@
+<h1>Marque ayant l'id : <?= $viewData['brandId'] ?></h1>

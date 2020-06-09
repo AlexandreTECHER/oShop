@@ -1,0 +1,1 @@
+<h1>Produit ayant pour type Id : <?= $viewData['typeId'] ?></h1>
