@@ -24,8 +24,12 @@ class CatalogController{
 
         $productId = $params['productId'];
 
+        $product = new Product();
+        $productToDisplay = $product->find($productId);
+
         $this->show('product', [
-            'productId' => $productId
+            'productId' => $productId,
+            'product' => $productToDisplay
         ]);
     }
 

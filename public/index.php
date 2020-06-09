@@ -4,6 +4,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/controllers/MainController.php';
 require_once __DIR__ . '/../app/controllers/CatalogController.php';
 
+require_once __DIR__ . '/../app/models/Product.php'; 
+require_once __DIR__ . '/../app/utils/Database.php';
+
+// $pdo = Database::getPDO();
+
+// $statement = $pdo->query('SELECT * FROM product');
+// dump($statement->fetchAll(PDO::FETCH_ASSOC));
+
 $router = new AltoRouter();
 
 $router->setBasePath($_SERVER['BASE_URI']);
