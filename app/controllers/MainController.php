@@ -1,6 +1,6 @@
 <?php
 
-class MainController{
+class MainController extends CoreController{
 
     public function homepage(){
         $this->show('home');
@@ -15,12 +15,5 @@ class MainController{
         echo 'erreur';
         exit();
     }
-
-    private function show($viewName, $viewData = []){
-
-        require_once __DIR__ . '/../views/header.tpl.php';
-        require_once __DIR__ . "/../views/{$viewName}.tpl.php";
-        require_once __DIR__ . '/../views/footer.tpl.php';
-
-    }
+    
 }

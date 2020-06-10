@@ -1,11 +1,17 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+require_once __DIR__ . '/../app/controllers/CoreController.php';
 require_once __DIR__ . '/../app/controllers/MainController.php';
 require_once __DIR__ . '/../app/controllers/CatalogController.php';
 
-require_once __DIR__ . '/../app/models/Product.php'; 
+require_once __DIR__ . '/../app/models/CoreModel.php'; 
 require_once __DIR__ . '/../app/utils/Database.php';
+require_once __DIR__ . '/../app/models/Product.php'; 
+require_once __DIR__ . '/../app/models/Type.php';
+require_once __DIR__ . '/../app/models/Brand.php';
+require_once __DIR__ . '/../app/models/Category.php';
 
 // $pdo = Database::getPDO();
 
@@ -24,6 +30,16 @@ $router->map(
         'controller' => 'MainController'
     ],
     'homepage' 
+);
+
+$router->map( 
+    'GET', 
+    '/test', 
+    [
+        'method' => 'test',
+        'controller' => 'MainController'
+    ],
+    'test-oui' 
 );
 
 $router->map( 
