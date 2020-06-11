@@ -2,6 +2,7 @@
 
 namespace Oshop\Controllers;
 
+use Oshop\Models\Brand;
 use Oshop\Models\Category;
 use Oshop\Models\Product;
 
@@ -11,8 +12,16 @@ class CatalogController extends CoreController{
 
         $categoryId = $params['categoryId'];
 
+        $product = new Product();
+        $productsToLoad = $product->findAllByCategory($categoryId);
+
+        $category = new Category();
+        $categoryToDisplay = $category->find($categoryId);
+
+
         $this->show('category', [
-            'categoryId' => $categoryId
+            'products' => $productsToLoad,
+            'category' => $categoryToDisplay
         ]);
     }
 
@@ -45,9 +54,12 @@ class CatalogController extends CoreController{
 
         $brandId = $params['brandId'];
 
+        $products = new Brand();
+        $productsToDisplay = $products->findAllByBrand($brandId);
+
         $this->show('brand', [
-            'brandId' => $brandId
+            'brandId' => $brandId,
+            'productsByBrand' => $productsToDisplay
         ]);
     }
-
 }

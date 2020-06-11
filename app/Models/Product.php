@@ -199,7 +199,7 @@ class Product extends CoreModel
             WHERE `category_id` = {$categoryId}
         ";
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Product');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Oshop\Models\Product');
 
         return $result;
 

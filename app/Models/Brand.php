@@ -45,4 +45,15 @@ class Brand extends CoreModel{
         return $result;
 
     }
+
+    public function findAllByBrand($brandId){
+
+        $pdo = \Database::getPDO();
+        $sql = 'SELECT * FROM product WHERE brand_id = ' . $brandId;
+        $statement = $pdo->query($sql);
+
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Oshop\Models\Product');
+
+        return $result;
+    }
 }

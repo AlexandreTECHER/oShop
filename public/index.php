@@ -92,6 +92,5 @@ if(!$match){
     $mainController->error();
 }
 
-
 $mainController = new $controllerToUse();
 $mainController->$methodeToUse($match['params']);
