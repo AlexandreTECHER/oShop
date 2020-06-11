@@ -1,6 +1,8 @@
 <?php
 
-class Type extends CoreModel{
+namespace Oshop\Models;
+
+class Brand extends CoreModel{
 
     private $footer_order;
 
@@ -24,25 +26,23 @@ class Type extends CoreModel{
         return $this;
     }
 
-    public function find($typeId){
+    public function find($brandId){
 
-        $database = Database::getPDO();
-        $sql = 'SELECT * FROM type WHERE id = '.$typeId;
+        $database = \Database::getPDO();
+        $sql = 'SELECT * FROM brand WHERE id = '.$brandId;
         $statement = $database->query($sql);
-        $result = $statement->fetchObject('Type');
+        $result = $statement->fetchObject('Oshop\Models\Brand');
 
         return $result;
     }
 
     public function findAllForFooter(){
-        $database = Database::getPDO();
-        $sql = 'SELECT * FROM type WHERE footer_order > 0 ORDER BY footer_order ASC';
+        $database = \Database::getPDO();
+        $sql = 'SELECT * FROM brand WHERE footer_order > 0 ORDER BY footer_order';
         $statement = $database->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Type');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Oshop\Models\Brand');
 
         return $result;
 
     }
-
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Oshop\Models;
+
 class Category extends CoreModel{
 
     private $subtitle;
@@ -69,20 +71,20 @@ class Category extends CoreModel{
 
     public function find($categoryId){
 
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = 'SELECT * FROM category WHERE id = '.$categoryId;
         $statement = $pdo->query($sql);
-        $result = $statement->fetchObject('Category');
+        $result = $statement->fetchObject('Oshop\Models\Category');
         
         return $result;
     }
 
     public function findAllForHome(){
         
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = 'SELECT * FROM category WHERE footer_order > 0 ORDER BY footer_order';
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Category');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Oshop\Models\Category');
 
         return $result;
     }

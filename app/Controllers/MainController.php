@@ -1,5 +1,7 @@
 <?php
 
+namespace Oshop\Controllers;
+
 class MainController extends CoreController{
 
     public function homepage(){

@@ -1,5 +1,7 @@
 <?php
 
+namespace Oshop\Models;
+
 class CoreModel{
 
     protected $id;

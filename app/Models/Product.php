@@ -1,5 +1,7 @@
 <?php
 
+namespace Oshop\Models;
+
 class Product extends CoreModel
 {
 
@@ -158,7 +160,7 @@ class Product extends CoreModel
     public function find($productId)
     {
 
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = "
         SELECT 
         `product`.*,
@@ -168,7 +170,7 @@ class Product extends CoreModel
         WHERE `product`.`id`= {$productId}
         ";
         $statement = $pdo->query($sql);
-        $result = $statement->fetchObject('Product');
+        $result = $statement->fetchObject('Oshop\Models\Product');
 
         return $result;
     }
@@ -176,10 +178,10 @@ class Product extends CoreModel
     public function findAll()
     {
 
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = 'SELECT * FROM product';
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         return $result;
     }
@@ -187,7 +189,7 @@ class Product extends CoreModel
     public function findAllByCategory($categoryId)
     {
 
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = "
             SELECT
             `product`.*,
@@ -197,7 +199,7 @@ class Product extends CoreModel
             WHERE `category_id` = {$categoryId}
         ";
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Product');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Product');
 
         return $result;
 
@@ -205,7 +207,7 @@ class Product extends CoreModel
 
     public function findAllByBrand($brandId){
 
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = "
         SELECT
         `product`.*,
@@ -215,13 +217,13 @@ class Product extends CoreModel
         WHERE `brand_id` = {$brandId} 
         ";
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Product');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Product');
 
         return $result;
     }
 
     public function findAllByType($typeId){
-        $pdo = Database::getPDO();
+        $pdo = \Database::getPDO();
         $sql = "
         SELECT 
         `product`.*,
@@ -231,7 +233,7 @@ class Product extends CoreModel
         WHERE `type_id` = {$typeId} 
         ";
         $statement = $pdo->query($sql);
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Product');
+        $result = $statement->fetchAll(\PDO::FETCH_CLASS, 'Product');
 
         dd($result);
     }

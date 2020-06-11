@@ -1,5 +1,10 @@
 <?php
 
+namespace Oshop\Controllers;
+
+use Oshop\Models\Category;
+use Oshop\Models\Product;
+
 class CatalogController extends CoreController{
 
     public function category($params){
@@ -24,11 +29,14 @@ class CatalogController extends CoreController{
 
         $productId = $params['productId'];
 
-        $product = new Product();
+        $product = new Product;
         $productToDisplay = $product->find($productId);
 
+        $categoryModel = new Category;
+        $category = $categoryModel->find($productToDisplay->getCategoryId());
+
         $this->show('product', [
-            'productId' => $productId,
+            'category' => $category,
             'product' => $productToDisplay
         ]);
     }

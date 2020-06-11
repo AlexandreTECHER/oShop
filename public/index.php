@@ -1,17 +1,20 @@
 <?php
 
+use Oshop\Controllers\MainController;
+use Oshop\Controllers\CatalogController;
+
 require_once __DIR__ . '/../vendor/autoload.php';
-
-require_once __DIR__ . '/../app/controllers/CoreController.php';
-require_once __DIR__ . '/../app/controllers/MainController.php';
-require_once __DIR__ . '/../app/controllers/CatalogController.php';
-
-require_once __DIR__ . '/../app/models/CoreModel.php'; 
 require_once __DIR__ . '/../app/utils/Database.php';
-require_once __DIR__ . '/../app/models/Product.php'; 
-require_once __DIR__ . '/../app/models/Type.php';
-require_once __DIR__ . '/../app/models/Brand.php';
-require_once __DIR__ . '/../app/models/Category.php';
+
+// require_once __DIR__ . '/../app/controllers/CoreController.php';
+// require_once __DIR__ . '/../app/controllers/MainController.php';
+// require_once __DIR__ . '/../app/controllers/CatalogController.php';
+
+// require_once __DIR__ . '/../app/models/CoreModel.php'; 
+// require_once __DIR__ . '/../app/models/Product.php'; 
+// require_once __DIR__ . '/../app/models/Type.php';
+// require_once __DIR__ . '/../app/models/Brand.php';
+// require_once __DIR__ . '/../app/models/Category.php';
 
 $router = new AltoRouter();
 
@@ -81,11 +84,11 @@ $router->map(
 $match = $router->match();
 
 $methodeToUse = $match['target']['method'];
-$controllerToUse = $match['target']['controller'];
+$controllerToUse = 'Oshop\\Controllers\\' . $match['target']['controller'];
 
 
 if(!$match){
-    $mainController = new MainController();
+    $mainController = new MainController;
     $mainController->error();
 }
 
