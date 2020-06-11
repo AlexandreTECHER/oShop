@@ -36,11 +36,13 @@ class Type extends CoreModel{
 
     public function findAllForFooter(){
         $database = Database::getPDO();
-        $sql = 'SELECT * FROM type WHERE footer_order > 0 ORDER BY footer_order';
+        $sql = 'SELECT * FROM type WHERE footer_order > 0 ORDER BY footer_order ASC';
         $statement = $database->query($sql);
         $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Type');
 
         return $result;
 
     }
+
+
 }

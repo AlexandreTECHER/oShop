@@ -13,11 +13,6 @@ require_once __DIR__ . '/../app/models/Type.php';
 require_once __DIR__ . '/../app/models/Brand.php';
 require_once __DIR__ . '/../app/models/Category.php';
 
-// $pdo = Database::getPDO();
-
-// $statement = $pdo->query('SELECT * FROM product');
-// dump($statement->fetchAll(PDO::FETCH_ASSOC));
-
 $router = new AltoRouter();
 
 $router->setBasePath($_SERVER['BASE_URI']);
@@ -30,16 +25,6 @@ $router->map(
         'controller' => 'MainController'
     ],
     'homepage' 
-);
-
-$router->map( 
-    'GET', 
-    '/test', 
-    [
-        'method' => 'test',
-        'controller' => 'MainController'
-    ],
-    'test-oui' 
 );
 
 $router->map( 
